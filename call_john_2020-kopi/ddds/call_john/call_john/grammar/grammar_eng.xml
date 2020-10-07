@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar>
+
+  <action name="top">
+    <one-of>
+      <item>main menu</item>
+      <item>top</item>
+      <item>beginning</item>
+      <item>cancel</item>
+      <item>forget it</item>
+      <item>never mind</item>
+      <item>abort</item>
+    </one-of>
+  </action>
+
+  <action name="up">
+    <one-of>
+      <item>up</item>
+      <item>back</item>
+      <item>go back</item>
+    </one-of>
+  </action>
+
+
+  <action name="call_contact">
+    <one-of>
+      <item>call</item>
+      <item>make a call</item>
+      <item>call <slot predicate="select_contact" type="individual"/> <slot predicate="select_number" type="individual"/></item>
+      <item>call <slot predicate="select_contact" type="individual"/></item>
+    </one-of>
+  </action>
+
+<!--   <question type="wh_question" speaker="user" predicate="find_number">
+    <one-of>
+      <item>I want to know a contact's number</item>
+      <item>what is <slot predicate="select_contact" type="individual"/> <slot predicate="select_number" type="individual"/></item>
+      <item>what is <slot predicate="select_contact" type="individual"/> number</item>
+      <item></item>
+    </one-of>
+  </question> -->
+
+  <question type="wh_question" speaker="user" predicate="find_number">
+    <one-of>
+      <item>I want to know a contact's number</item>
+      <item>what is <slot predicate="select_contact" type="individual"/> <slot predicate="select_number" type="individual"/></item>
+      <item>what is <slot predicate="select_contact" type="individual"/> number</item>
+    </one-of>
+  </question>
+
+
+  <question speaker="all" predicate="" type="wh_question">Which phone</question>
+
+  <question speaker="all" predicate="select_contact" type="wh_question">Which contact</question>
+
+  <question speaker="all" predicate="select_number" type="wh_question">Which phone</question>
+<!-- <question speaker="system" predicate="find_number" type="wh_question">Whose number would you like to find</question> -->
+
+  <question speaker="all" predicate="find_number" type="wh_question">the contact's phone number</question>
+<!-- Used to acquire a phone number off a contact if chosen, somehow. -->
+
+
+  <answer predicate="find_number" speaker="system">It's <slot predicate="find_number"/></answer>
+
+
+  <answer predicate="find_number" speaker="system"><slot predicate="select_contact"/> number is <slot predicate="select_number"/></answer>
+
+
+
+
+
+  <report action="Call" status="ended">Calling <slot predicate="select_contact"/> <slot predicate="select_number"/> </report>
+
+
+
+
+
+<!-- <request action="call"> <utterance>call <individual sort="contact"/>'s <individual sort="number_type"/></utterance></request> -->
+
+
+
+
+  <individual name="contact_john">
+    <one-of>
+      <item>John's</item>
+      <item>john's</item>
+      <item>John</item>
+      <item>john</item>
+    </one-of>
+  </individual>
+
+
+  <individual name="contact_lisa">
+    <one-of>
+      <item>Lisa</item>
+      <item>lisa</item>
+      <item>Lisa's</item>
+      <item>lisa's</item>
+    </one-of>
+  </individual>
+
+  <individual name="contact_mary">
+    <one-of>
+      <item>Mary</item>
+      <item>Mary's</item>
+      <item>mary's</item>
+      <item>Mary</item>
+      <item>mary</item>
+    </one-of>
+  </individual>
+
+  <individual name="contact_andy">
+    <one-of>
+      <item>Andy</item>
+      <item>andy</item>
+      <item>Andy's</item>
+      <item>andy's</item>
+    </one-of>
+  </individual>
+
+  <individual name="mobile">
+    <one-of>
+      <item>mobile</item>
+    </one-of>
+  </individual>
+
+  <individual name="work">
+    <one-of>
+      <item>work</item>
+      <item>Work</item>
+      <item>work phone</item>
+      <item>work number</item>
+    </one-of>
+  </individual>
+
+  <individual name="home">
+    <one-of>
+      <item>home</item>
+      <item>Home</item>
+    </one-of>
+  </individual>
+</grammar>

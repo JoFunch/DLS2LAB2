@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service_interface>
+
+  <action name="Call">
+        <parameters>
+            <parameter predicate="select_contact" format="grammar_entry"/>
+            <parameter predicate="select_number" format="value"/>
+        </parameters>
+        <failure_reasons/>
+        <target>
+            <http endpoint="http://http-service/call"/>
+        </target>
+  </action>
+
+
+  <query name="find_number">
+  	<parameters>
+    	<parameter predicate="select_contact" format="value"/>
+    	<parameter predicate="select_number" format="value"/>
+  	</parameters>
+  	<target>
+    	<http endpoint="http://http-service/find_number"/>
+  	</target>
+</query>
+
+
+</service_interface>
+
